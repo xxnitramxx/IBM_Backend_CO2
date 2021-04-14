@@ -14,5 +14,6 @@ The reponse JSON data is an array of Objects wich contain:
 - the fuel type `sourceType`
 All data entries with a CO2 emissions of 0 are removed.
 
-```[{"department":"Library","emissionsMtco2e":5.09393909154412E-4,"sourceType":"Electric"},...]
+```
+[{"department":"Library","emissionsMtco2e":5.09393909154412E-4,"sourceType":"Electric"},...]
 ```
