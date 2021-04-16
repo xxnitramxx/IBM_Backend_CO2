@@ -5,7 +5,7 @@ It is a Java project developed with the Spring Boot Framework to offer access to
 
 ## REST API
 You can access the API with the URL `/publicbuildings` (for example `localhost:8080/publicbuildings`). 
-To filter the data for the department name you have to add the parameter `department` in the URL (for example `localhost:8080/publicbuildings?department=Recreation%20and%20Park%20Department`)
+To filter the data for the department name or the source type you have to add the parameter `department` or `sourceType` in the URL (for example `localhost:8080/publicbuildings?department=Recreation%20and%20Park%20Department`).
 
 ### Response
 The reponse JSON data is an array of Objects wich contain:
