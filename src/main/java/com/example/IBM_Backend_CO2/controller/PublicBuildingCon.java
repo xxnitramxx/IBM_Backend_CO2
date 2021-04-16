@@ -27,11 +27,11 @@ public class PublicBuildingCon {
     private IDao DAO;
 
     @GetMapping("/publicbuildings")
-    public Set<PublicBuilding> all(@RequestParam(value = "department", defaultValue = "") String department) {
+    public Set<PublicBuilding> all(@RequestParam(value = "department", defaultValue = "") String department, @RequestParam(value = "sourceType", defaultValue = "") String sourceType) {
         Set<PublicBuilding> tempPubBuild = this.DAO.loadData();
 
         return tempPubBuild.stream().filter(s -> {
-            return s.getEmissionsMtco2e() != 0 && (department.equals("") || (!department.equals("") && s.getDepartment().equals(department)));
+            return s.getEmissionsMtco2e() != 0 && (department.equals("") || (!department.equals("") && s.getDepartment().equals(department))) && (sourceType.equals("") || (!sourceType.equals("") && s.getSourceType().equals(sourceType)));
         }).map(element -> {
             return (PublicBuilding) element;
         }).collect(Collectors.toSet());
