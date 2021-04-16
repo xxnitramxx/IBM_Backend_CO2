@@ -20,4 +20,6 @@ All data entries with a CO2 emissions of 0 are removed.
 
 ## Live demo
 
-The link for the life demo: []()
+The link for the life demo: 
+[All data `/publicbuildings`](https://ibmbackendco2.herokuapp.com/publicbuildings)
+[Filtered for the department name `Police`](https://ibmbackendco2.herokuapp.com/publicbuildings?Police)
