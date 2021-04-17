@@ -13,9 +13,9 @@ import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
-import java.util.HashSet;
+import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.Set;
+import java.util.List;
 import javax.net.ssl.HttpsURLConnection;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -23,7 +23,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONTokener;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
 /**
@@ -35,12 +34,12 @@ public class JsonDao implements IDao {
 
     private static final Logger logger = LogManager.getLogger(JsonDao.class);
 
-    private static final String DEF_STR_API = "https://data.sfgov.org/resource/pxac-sadh.json";
+    private static final String DEF_STR_API = "https://data.sfgov.org/resource/pxac-sadh.json?$limit=5000";
 
     private final URL DATA_URL;
     private final boolean CACHE_DATA;
 
-    private Set<PublicBuilding> loadedData;
+    private List<PublicBuilding> loadedData;
 
     public JsonDao() throws MalformedURLException {
         this(DEF_STR_API, true);
@@ -53,13 +52,13 @@ public class JsonDao implements IDao {
     public JsonDao(URL DATA_URL, boolean CACHE_DATA) {
         this.DATA_URL = DATA_URL;
         this.CACHE_DATA = CACHE_DATA;
-        this.loadedData = new HashSet<>();
+        this.loadedData = new ArrayList<>();
     }
 
     @Override
-    public Set<PublicBuilding> loadData() {
+    public List<PublicBuilding> loadData() {
         if (!CACHE_DATA || this.loadedData.isEmpty()) {
-            this.loadedData = new HashSet<>();
+            this.loadedData = new ArrayList<>();
             HttpsURLConnection conn = null;
 
             try {

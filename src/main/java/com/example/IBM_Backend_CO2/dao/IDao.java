@@ -6,7 +6,7 @@
 package com.example.IBM_Backend_CO2.dao;
 
 import com.example.IBM_Backend_CO2.model.PublicBuilding;
-import java.util.Set;
+import java.util.List;
 
 /**
  *
@@ -14,5 +14,5 @@ import java.util.Set;
  */
 
 public interface IDao {
-    public Set<PublicBuilding> loadData();
+    public List<PublicBuilding> loadData();
 }

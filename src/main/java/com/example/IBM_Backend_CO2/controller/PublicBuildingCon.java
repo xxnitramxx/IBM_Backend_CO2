@@ -7,6 +7,7 @@ package com.example.IBM_Backend_CO2.controller;
 
 import com.example.IBM_Backend_CO2.dao.IDao;
 import com.example.IBM_Backend_CO2.model.PublicBuilding;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +29,7 @@ public class PublicBuildingCon {
 
     @GetMapping("/publicbuildings")
     public Set<PublicBuilding> all(@RequestParam(value = "department", defaultValue = "") String department, @RequestParam(value = "sourceType", defaultValue = "") String sourceType) {
-        Set<PublicBuilding> tempPubBuild = this.DAO.loadData();
+        List<PublicBuilding> tempPubBuild = this.DAO.loadData();
 
         return tempPubBuild.stream().filter(s -> {
             return s.getEmissionsMtco2e() != 0 
